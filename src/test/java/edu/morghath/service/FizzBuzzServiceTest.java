@@ -13,7 +13,7 @@ public class FizzBuzzServiceTest {
 		String numberDivBy5 = FizzBuzzService.fizzBuzz(80);
 		String numberDivBy3and5 = FizzBuzzService.fizzBuzz(45);
 		
-		assertTrue(simpleNummber == "1");
+		assertTrue(simpleNummber.equals("1"));
 		assertTrue(numberDivBy3 == "Fizz");
 		assertTrue(numberDivBy5 == "Buzz");
 		assertTrue(numberDivBy3and5 == "FizzBuzz");
