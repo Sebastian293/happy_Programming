@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class FizzBuzzServiceTest {
+	private static final int BOTTOMBORDER = 0;
+	private static final int TOPBORDER = 100;
 
 	@Test
 	public void fizzBuzzSimpleValuesTest() throws Exception {
@@ -17,5 +19,18 @@ public class FizzBuzzServiceTest {
 		assertTrue(numberDivBy3 == "Fizz");
 		assertTrue(numberDivBy5 == "Buzz");
 		assertTrue(numberDivBy3and5 == "FizzBuzz");
+	}
+	
+	@Test
+	public void fizzBuzzBetweenBordersTest() throws Exception {
+		String outOfBorderBottom = FizzBuzzService.fizzBuzz(BOTTOMBORDER -1);
+		String bottomBorder = FizzBuzzService.fizzBuzz(BOTTOMBORDER);
+		String topBorder = FizzBuzzService.fizzBuzz(TOPBORDER);
+		String outOfTopBorder = FizzBuzzService.fizzBuzz(TOPBORDER + 1);
+		
+		assertTrue(outOfBorderBottom == null);
+		assertTrue(bottomBorder == "FizzBuzz");
+		assertTrue(topBorder == "Buzz");
+		assertTrue(outOfTopBorder == null);
 	}
 }
