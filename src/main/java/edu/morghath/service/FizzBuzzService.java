@@ -21,18 +21,22 @@ public class FizzBuzzService {
 					"Es dürfen nur Zahlen im Intervall von[" + BOTTOM_BORDER + "," + TOP_BORDER + "] verwendet werden");
 		}
 
-		if (n % 5 == 0 && n % 3 == 0) {
+		if (dividable(n, 5) && dividable(n, 3)) {
 			return "FizzBuzz";
 		}
 
-		if (n % 3 == 0) {
+		if (dividable(n, 3)) {
 			return "Fizz";
 		}
 
-		if (n % 5 == 0) {
+		if (dividable(n, 5)) {
 			return "Buzz";
 		}
 
 		return Integer.toString(n);
+	}
+	
+	private static boolean dividable(int dividend, int divisor) {
+		return  dividend % divisor ==  0;
 	}
 }
