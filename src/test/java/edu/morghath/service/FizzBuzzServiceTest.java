@@ -7,8 +7,6 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 public class FizzBuzzServiceTest {
-	private static final int BOTTOM_BORDER = 0;
-	private static final int TOP_BORDER = 100;
 
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
@@ -21,15 +19,15 @@ public class FizzBuzzServiceTest {
 		String numberDivBy3and5 = FizzBuzzService.fizzBuzz(45);
 
 		assertTrue(simpleNummber.equals("1"));
-		assertTrue(numberDivBy3 == "Fizz");
-		assertTrue(numberDivBy5 == "Buzz");
-		assertTrue(numberDivBy3and5 == "FizzBuzz");
+		assertTrue(numberDivBy3 == FizzBuzzService.DIV_BY_3);
+		assertTrue(numberDivBy5 == FizzBuzzService.DIV_BY_5);
+		assertTrue(numberDivBy3and5 == FizzBuzzService.DIV_BY_3_AND_5);
 	}
 
 	@Test
 	public void fizzBuzzBorderTest() throws Exception {
-		String bottomBorder = FizzBuzzService.fizzBuzz(BOTTOM_BORDER);
-		String topBorder = FizzBuzzService.fizzBuzz(TOP_BORDER);
+		String bottomBorder = FizzBuzzService.fizzBuzz(FizzBuzzService.BOTTOM_BORDER);
+		String topBorder = FizzBuzzService.fizzBuzz(FizzBuzzService.TOP_BORDER);
 
 		assertTrue(bottomBorder == "FizzBuzz");
 		assertTrue(topBorder == "Buzz");
@@ -38,18 +36,16 @@ public class FizzBuzzServiceTest {
 	@Test
 	public void fizzBuzzOutOfBottomBorderTest() throws Exception {
 		thrown.expect(Exception.class);
-		thrown.expectMessage(
-				"Es dürfen nur Zahlen im Intervall von[" + BOTTOM_BORDER + "," + TOP_BORDER + "] verwendet werden");
+		thrown.expectMessage(FizzBuzzService.OUT_OF_BORDER_EXEPTION);
 
-		FizzBuzzService.fizzBuzz(BOTTOM_BORDER - 1);
+		FizzBuzzService.fizzBuzz(FizzBuzzService.BOTTOM_BORDER - 1);
 	}
 
 	@Test
 	public void fizzBuzzOutOfTopBorderTest() throws Exception {
 		thrown.expect(Exception.class);
-		thrown.expectMessage(
-				"Es dürfen nur Zahlen im Intervall von[" + BOTTOM_BORDER + "," + TOP_BORDER + "] verwendet werden");
+		thrown.expectMessage(FizzBuzzService.OUT_OF_BORDER_EXEPTION);
 
-		FizzBuzzService.fizzBuzz(TOP_BORDER + 1);
+		FizzBuzzService.fizzBuzz(FizzBuzzService.TOP_BORDER + 1);
 	}
 }
